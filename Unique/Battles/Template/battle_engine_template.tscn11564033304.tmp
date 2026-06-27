@@ -1,0 +1,117 @@
+[gd_scene format=3 uid="uid://dqu1cjrbjuxq4"]
+
+[ext_resource type="Script" uid="uid://bfcc3jra2q2ys" path="res://Unique/Battles/Template/scr_battle_engine_template.gd" id="1_1bnqh"]
+[ext_resource type="Texture2D" uid="uid://cl3vy5fr075w0" path="res://Assets/Textures/reference1.png" id="2_iu3gr"]
+[ext_resource type="PackedScene" uid="uid://cmom0kq1bjh7o" path="res://Unique/Battles/Template/Enemies/godotman/godotman.tscn" id="2_ucjnn"]
+[ext_resource type="PackedScene" uid="uid://dc87eedsbgwdj" path="res://Global/BattleEngine/battle_state_machine.tscn" id="3_8j7uo"]
+[ext_resource type="PackedScene" uid="uid://dp5uasmt07io1" path="res://Unique/Battles/Template/Engine/board.tscn" id="3_inp38"]
+[ext_resource type="Script" uid="uid://dawbg47q6vw7f" path="res://Global/BattleEngine/scr_attackvars.gd" id="3_vhukx"]
+[ext_resource type="Script" uid="uid://dsj3msvuimn43" path="res://Global/UI/scr_writer.gd" id="4_1wik3"]
+[ext_resource type="FontFile" uid="uid://cya3imwhm5xrq" path="res://Assets/Fonts/determination_mono.ttf" id="4_qejx5"]
+[ext_resource type="FontFile" uid="uid://b4pd4txyho8q" path="res://Assets/Fonts/mars_needs_cunnilingus.ttf" id="4_v7lgb"]
+[ext_resource type="FontFile" uid="uid://clsjtnhygtu8u" path="res://Assets/Fonts/8_bit_wonder.ttf" id="5_ymsar"]
+[ext_resource type="FontFile" uid="uid://c3jxu15i1w4dx" path="res://Assets/Fonts/dotumche_pixel.ttf" id="6_iu3gr"]
+[ext_resource type="Script" uid="uid://diy45cvkexepl" path="res://Global/BattleEngine/in_buttons.gd" id="7_ymsar"]
+[ext_resource type="Script" uid="uid://gwexnv03ia24" path="res://Global/UI/debugtext.gd" id="8_jvyui"]
+[ext_resource type="AudioStream" uid="uid://b17fehxqsd1vg" path="res://Assets/Sounds/Blits/blip_1.wav" id="10_sh1vh"]
+
+[node name="BattleEngine" type="Node" unique_id=1300317878 node_paths=PackedStringArray("board", "battle_writer")]
+script = ExtResource("1_1bnqh")
+board = NodePath("battle_board")
+battle_writer = NodePath("writer")
+
+[node name="rect_bg" type="ColorRect" parent="." unique_id=19931212]
+offset_right = 640.0
+offset_bottom = 480.0
+color = Color(0.33068013, 0.2072, 0.56, 1)
+
+[node name="reference" type="Sprite2D" parent="." unique_id=1863319256]
+modulate = Color(1, 1, 1, 0.5764706)
+position = Vector2(320, 240)
+texture = ExtResource("2_iu3gr")
+
+[node name="attackvars" type="Node" parent="." unique_id=982291193]
+script = ExtResource("3_vhukx")
+boxtexts = Array[String](["fuclk"])
+metadata/_custom_type_script = "uid://dawbg47q6vw7f"
+
+[node name="PlayerUI" type="Node" parent="." unique_id=140507202]
+
+[node name="NameLV" type="Label" parent="PlayerUI" unique_id=1432350736]
+offset_left = 35.0
+offset_top = 392.0
+offset_right = 241.0
+offset_bottom = 432.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.52
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = ExtResource("4_v7lgb")
+theme_override_font_sizes/font_size = 24
+text = "Player LV 1"
+vertical_alignment = 1
+autowrap_trim_flags = 0
+
+[node name="HPLabel" type="Label" parent="PlayerUI" unique_id=482621110]
+offset_left = 244.0
+offset_top = 398.0
+offset_right = 270.0
+offset_bottom = 421.0
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = ExtResource("5_ymsar")
+theme_override_font_sizes/font_size = 12
+text = "HP"
+vertical_alignment = 1
+
+[node name="battle_state_machine" parent="." unique_id=452425255 node_paths=PackedStringArray("attack_variables", "init_state") instance=ExtResource("3_8j7uo")]
+attack_variables = NodePath("../attackvars")
+init_state = NodePath("in_buttons")
+
+[node name="in_buttons" type="Node" parent="battle_state_machine" unique_id=1648987428 node_paths=PackedStringArray("battle_writer", "attack_vars")]
+script = ExtResource("7_ymsar")
+battle_writer = NodePath("../../writer")
+attack_vars = NodePath("../../attackvars")
+metadata/_custom_type_script = "uid://ccsp5feod5wjj"
+
+[node name="enemy_container" type="Node2D" parent="." unique_id=2066037855]
+
+[node name="godotman" parent="enemy_container" unique_id=1421685219 instance=ExtResource("2_ucjnn")]
+position = Vector2(320, 245)
+
+[node name="battle_board" parent="." unique_id=2070607025 instance=ExtResource("3_inp38")]
+
+[node name="writer" type="RichTextLabel" parent="." unique_id=339743751]
+physics_interpolation_mode = 0
+texture_filter = 1
+clip_contents = false
+offset_left = 52.0
+offset_top = 270.0
+offset_right = 597.0
+offset_bottom = 379.0
+theme_override_constants/outline_size = 9
+theme_override_fonts/normal_font = ExtResource("4_qejx5")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "* box_text"
+scroll_active = false
+script = ExtResource("4_1wik3")
+sound_file = ExtResource("10_sh1vh")
+metadata/_custom_type_script = "uid://dsj3msvuimn43"
+
+[node name="modulate" type="CanvasModulate" parent="." unique_id=230402903]
+visible = false
+color = Color(0.58431375, 0.60784316, 1, 1)
+
+[node name="debugtext" type="RichTextLabel" parent="." unique_id=1626638901]
+modulate = Color(1, 1, 1, 0.57254905)
+clip_contents = false
+offset_left = 5.0
+offset_top = 4.0
+offset_right = 640.0
+offset_bottom = 480.0
+theme_override_constants/outline_size = 4
+theme_override_fonts/normal_font = ExtResource("6_iu3gr")
+theme_override_font_sizes/normal_font_size = 13
+text = "an debug text"
+script = ExtResource("8_jvyui")
+metadata/_edit_lock_ = true

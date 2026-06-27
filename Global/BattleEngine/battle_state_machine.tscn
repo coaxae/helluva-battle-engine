@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dc87eedsbgwdj"]
+
+[ext_resource type="Script" uid="uid://3v3vfhqsb5ca" path="res://Global/BattleEngine/battle_state_machine.gd" id="1_lq2kx"]
+
+[node name="battle_state_machine" type="Node" unique_id=452425255]
+script = ExtResource("1_lq2kx")
+metadata/_custom_type_script = "uid://6l5om7kiqegr"

@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://dljqxlp0oxc1h"]
+
+[ext_resource type="Script" uid="uid://dva8g64ykhc5q" path="res://Global/BattleEngine/player_soul.gd" id="1_4pak4"]
+[ext_resource type="Texture2D" uid="uid://ci1dybhldv6ip" path="res://Assets/Textures/sheets/soul.png" id="1_mjscn"]
+[ext_resource type="Script" uid="uid://k46e5f0jnqu7" path="res://Global/BattleEngine/soulsprite.gd" id="2_6bx2n"]
+[ext_resource type="Texture2D" uid="uid://byuwxmt82sqp3" path="res://Assets/Textures/BattleEngine/2d_lights_and_shadows_neutral_point_light.webp" id="2_lqs1d"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4pak4"]
+light_mode = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lqs1d"]
+atlas = ExtResource("1_mjscn")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6bx2n"]
+atlas = ExtResource("1_mjscn")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4pak4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lqs1d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6bx2n")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mjscn"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lqs1d"]
+size = Vector2(6, 6)
+
+[node name="player_soul" type="CharacterBody2D" unique_id=1438786915]
+collision_mask = 3
+script = ExtResource("1_4pak4")
+
+[node name="sprite" type="AnimatedSprite2D" parent="." unique_id=1095755332]
+modulate = Color(1, 0, 0, 1)
+material = SubResource("CanvasItemMaterial_4pak4")
+sprite_frames = SubResource("SpriteFrames_4pak4")
+script = ExtResource("2_6bx2n")
+
+[node name="light" type="PointLight2D" parent="sprite" unique_id=503193197]
+texture = ExtResource("2_lqs1d")
+texture_scale = 0.5
+
+[node name="collision" type="CollisionShape2D" parent="." unique_id=667089482]
+shape = SubResource("RectangleShape2D_mjscn")
+
+[node name="hitbox" type="Area2D" parent="." unique_id=1639718130 groups=["player_hitbox"]]
+
+[node name="collision" type="CollisionShape2D" parent="hitbox" unique_id=281039541 groups=["player_hitbox"]]
+shape = SubResource("RectangleShape2D_lqs1d")

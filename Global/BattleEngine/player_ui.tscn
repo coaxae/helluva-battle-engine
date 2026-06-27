@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://c1vkb3vmj4yi0"]
+
+[node name="PlayerUI" type="Node" unique_id=140507202]
+
+[node name="Container" type="HBoxContainer" parent="." unique_id=1379778600]
+offset_right = 40.0
+offset_bottom = 40.0

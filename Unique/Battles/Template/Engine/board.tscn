@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://dp5uasmt07io1"]
+
+[ext_resource type="Script" uid="uid://b7uhivdx1qx1c" path="res://Global/BattleEngine/scr_bullet_board.gd" id="1_1xfnd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bkral"]
+bg_color = Color(0, 0, 0, 0.41960785)
+border_width_left = 9
+border_width_top = 9
+border_width_right = 9
+border_width_bottom = 9
+border_color = Color(0, 0, 0, 1)
+corner_detail = 1
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1xfnd"]
+bg_color = Color(0, 0, 0, 0.49411765)
+draw_center = false
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+corner_detail = 1
+
+[node name="battle_board" type="Node2D" unique_id=1079000064 node_paths=PackedStringArray("walls", "background", "marker", "col_poly")]
+script = ExtResource("1_1xfnd")
+walls = NodePath("walls")
+background = NodePath("outlinebg")
+marker = NodePath("walls/mask_marker")
+col_poly = NodePath("collider/collider_poly")
+metadata/_custom_type_script = "uid://b7uhivdx1qx1c"
+
+[node name="outlinebg" type="Panel" parent="." unique_id=1691653741]
+offset_left = 33.0
+offset_top = 250.0
+offset_right = 608.0
+offset_bottom = 390.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_bkral")
+
+[node name="walls" type="Panel" parent="." unique_id=992064441]
+offset_left = 33.0
+offset_top = 250.0
+offset_right = 608.0
+offset_bottom = 390.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1xfnd")
+
+[node name="mask_marker" type="Marker2D" parent="walls" unique_id=196838123]
+position = Vector2(5, 5)
+
+[node name="collider" type="AnimatableBody2D" parent="." unique_id=1459163966]
+position = Vector2(320, 320)
+
+[node name="collider_poly" type="CollisionPolygon2D" parent="collider" unique_id=839527279]
+build_mode = 1
+polygon = PackedVector2Array(-283.5, -65, 281.5, -65, 281.5, 65, -283.5, 65)

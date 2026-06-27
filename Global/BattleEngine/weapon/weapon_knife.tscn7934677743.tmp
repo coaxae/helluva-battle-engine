@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://q1pve7gts200"]
+
+[ext_resource type="Script" uid="uid://bmr1m0tiw0ptq" path="res://Global/BattleEngine/weapon/scr_weapon_knife.gd" id="1_qgnqx"]
+[ext_resource type="Texture2D" uid="uid://bx8b867x0idxk" path="res://Assets/Textures/BattleEngine/spri_fight_target.png" id="2_2q0cb"]
+[ext_resource type="Texture2D" uid="uid://cnbqla1fl5qcs" path="res://Assets/Textures/sheets/spr_fight_reticle.png" id="3_hwmsr"]
+[ext_resource type="Texture2D" uid="uid://b21qiav0ao647" path="res://Assets/Textures/sheets/battle-spritesheet.png" id="4_rt0in"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rt0in"]
+atlas = ExtResource("3_hwmsr")
+region = Rect2(0, 0, 16, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trwp1"]
+atlas = ExtResource("3_hwmsr")
+region = Rect2(16, 0, 16, 86)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i4hlb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rt0in")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trwp1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4hlb"]
+atlas = ExtResource("4_rt0in")
+region = Rect2(477, 418, 26, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cr7rh"]
+atlas = ExtResource("4_rt0in")
+region = Rect2(508, 418, 26, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_054xv"]
+atlas = ExtResource("4_rt0in")
+region = Rect2(539, 418, 26, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ce13a"]
+atlas = ExtResource("4_rt0in")
+region = Rect2(570, 418, 26, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jqu38"]
+atlas = ExtResource("4_rt0in")
+region = Rect2(601, 418, 26, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ilfsm"]
+atlas = ExtResource("4_rt0in")
+region = Rect2(632, 418, 26, 110)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lvgih"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i4hlb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cr7rh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_054xv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ce13a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jqu38")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ilfsm")
+}],
+"loop": false,
+"name": &"default",
+"speed": 13.0
+}]
+
+[node name="WeaponKnife" type="Node2D" unique_id=891256562 node_paths=PackedStringArray("attack_eye", "bars")]
+script = ExtResource("1_qgnqx")
+attack_eye = NodePath("Target")
+bars = [NodePath("Bar1")]
+
+[node name="Target" type="Sprite2D" parent="." unique_id=1774584296]
+texture = ExtResource("2_2q0cb")
+
+[node name="Bar1" type="AnimatedSprite2D" parent="." unique_id=1569061175]
+sprite_frames = SubResource("SpriteFrames_i4hlb")
+
+[node name="KnifeSlash" type="AnimatedSprite2D" parent="." unique_id=647702138]
+visible = false
+sprite_frames = SubResource("SpriteFrames_lvgih")

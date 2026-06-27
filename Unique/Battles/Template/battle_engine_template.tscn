@@ -1,0 +1,497 @@
+[gd_scene format=3 uid="uid://dqu1cjrbjuxq4"]
+
+[ext_resource type="Script" uid="uid://bfcc3jra2q2ys" path="res://Unique/Battles/Template/scr_battle_engine_template.gd" id="1_1bnqh"]
+[ext_resource type="Texture2D" uid="uid://cl3vy5fr075w0" path="res://Assets/Textures/reference1.png" id="2_iu3gr"]
+[ext_resource type="PackedScene" uid="uid://cmom0kq1bjh7o" path="res://Unique/Battles/Template/Enemies/godotman/godotman.tscn" id="2_ucjnn"]
+[ext_resource type="Texture2D" uid="uid://bk3jgt64r3t28" path="res://Assets/Textures/distrust_bg.png" id="3_7i812"]
+[ext_resource type="PackedScene" uid="uid://dc87eedsbgwdj" path="res://Global/BattleEngine/battle_state_machine.tscn" id="3_8j7uo"]
+[ext_resource type="PackedScene" uid="uid://dp5uasmt07io1" path="res://Unique/Battles/Template/Engine/board.tscn" id="3_inp38"]
+[ext_resource type="Script" uid="uid://dawbg47q6vw7f" path="res://Global/BattleEngine/scr_attackvars.gd" id="3_vhukx"]
+[ext_resource type="Script" uid="uid://dsj3msvuimn43" path="res://Global/UI/scr_writer.gd" id="4_1wik3"]
+[ext_resource type="Script" uid="uid://c8gfvv2t1oyqj" path="res://Unique/Battles/Template/attacks/attack_0.gd" id="4_dfhb0"]
+[ext_resource type="FontFile" uid="uid://cya3imwhm5xrq" path="res://Assets/Fonts/determination_mono.ttf" id="4_qejx5"]
+[ext_resource type="Script" uid="uid://bpdcw20o5eyud" path="res://Global/BattleEngine/player_ui.gd" id="4_qsoso"]
+[ext_resource type="FontFile" uid="uid://b4pd4txyho8q" path="res://Assets/Fonts/mars_needs_cunnilingus.ttf" id="4_v7lgb"]
+[ext_resource type="FontFile" uid="uid://clsjtnhygtu8u" path="res://Assets/Fonts/8_bit_wonder.ttf" id="5_ymsar"]
+[ext_resource type="FontFile" uid="uid://c3jxu15i1w4dx" path="res://Assets/Fonts/dotumche_pixel.ttf" id="6_iu3gr"]
+[ext_resource type="Texture2D" uid="uid://1md3nxh8vjkf" path="res://Assets/Textures/sheets/buttons.png" id="7_3k1r1"]
+[ext_resource type="Script" uid="uid://diy45cvkexepl" path="res://Global/BattleEngine/states/in_buttons.gd" id="7_ymsar"]
+[ext_resource type="Script" uid="uid://gwexnv03ia24" path="res://Global/UI/debugtext.gd" id="8_jvyui"]
+[ext_resource type="Script" uid="uid://cptxmi2t3k8k3" path="res://Global/BattleEngine/states/fight_button.gd" id="10_d8ltm"]
+[ext_resource type="Script" uid="uid://r7ljg0cdnbke" path="res://Global/BattleEngine/states/attacking_enemy.gd" id="11_ac0h1"]
+[ext_resource type="Script" uid="uid://ccsp5feod5wjj" path="res://Global/scr_state.gd" id="12_i7stt"]
+[ext_resource type="Script" uid="uid://fscr7yy5v5h7" path="res://Global/BattleEngine/enemy_container.gd" id="12_m68fl"]
+[ext_resource type="Script" uid="uid://dmbmlbpn413o" path="res://Global/BattleEngine/states/pre_attack.gd" id="12_xr8na"]
+[ext_resource type="Script" uid="uid://d2qslgekm1nmp" path="res://Global/BattleEngine/states/enemy_attack.gd" id="13_2nveb"]
+[ext_resource type="Script" uid="uid://d3efuyilugjk5" path="res://Global/BattleEngine/states/act_button.gd" id="16_5gvuc"]
+[ext_resource type="Script" uid="uid://xx7b8h1n2b8a" path="res://Global/BattleEngine/states/acting_enemy.gd" id="17_5idiv"]
+[ext_resource type="PackedScene" uid="uid://dljqxlp0oxc1h" path="res://Global/BattleEngine/player_soul.tscn" id="17_us48r"]
+[ext_resource type="Script" uid="uid://b7vcb5navjl5u" path="res://Global/BattleEngine/states/act_text.gd" id="18_4kttd"]
+[ext_resource type="Script" uid="uid://dnfp0m7fx0kbn" path="res://Global/BattleEngine/states/item_button.gd" id="19_c3qdy"]
+[ext_resource type="Script" uid="uid://d2gryd6wynujq" path="res://Global/BattleEngine/states/using_item.gd" id="20_1qrii"]
+[ext_resource type="Script" uid="uid://cchbtrbueowoe" path="res://Global/BattleEngine/states/mercy_button.gd" id="20_xntmu"]
+[ext_resource type="Script" uid="uid://c6afdcmv4rkpy" path="res://Global/BattleEngine/states/mercy_enemy.gd" id="21_i1wxw"]
+[ext_resource type="AudioStream" uid="uid://cudb245omrw8u" path="res://Assets/Sounds/Blits/text_blit_custom.mp3" id="22_dfhb0"]
+[ext_resource type="Texture2D" uid="uid://dvjhy8gmryyyo" path="res://Assets/Textures/sheets/item_scroll_sheet.png" id="22_py4kd"]
+[ext_resource type="Script" uid="uid://b0myc0xc5rns1" path="res://Global/BattleEngine/mask.gd" id="32_e350c"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ymsar"]
+bg_color = Color(1, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qsoso"]
+bg_color = Color(1, 0.95, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d8ltm"]
+atlas = ExtResource("7_3k1r1")
+region = Rect2(0, 0, 114, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ac0h1"]
+atlas = ExtResource("7_3k1r1")
+region = Rect2(0, 48, 114, 46)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qsoso"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d8ltm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ac0h1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m68fl"]
+atlas = ExtResource("7_3k1r1")
+region = Rect2(155, 0, 114, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i7stt"]
+atlas = ExtResource("7_3k1r1")
+region = Rect2(155, 48, 114, 46)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i7stt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m68fl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i7stt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2nveb"]
+atlas = ExtResource("7_3k1r1")
+region = Rect2(310, 0, 114, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xr8na"]
+atlas = ExtResource("7_3k1r1")
+region = Rect2(310, 48, 114, 46)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dfhb0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2nveb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xr8na")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dfhb0"]
+atlas = ExtResource("7_3k1r1")
+region = Rect2(465, 0, 114, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7i812"]
+atlas = ExtResource("7_3k1r1")
+region = Rect2(465, 48, 114, 46)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5idiv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dfhb0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7i812")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4kttd"]
+atlas = ExtResource("22_py4kd")
+region = Rect2(0, 0, 13, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xntmu"]
+atlas = ExtResource("22_py4kd")
+region = Rect2(13, 0, 13, 65)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i1wxw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4kttd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xntmu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="BattleEngine" type="Node" unique_id=1300317878 node_paths=PackedStringArray("board", "battle_writer", "camera", "cover_black")]
+script = ExtResource("1_1bnqh")
+board = NodePath("battle_board")
+battle_writer = NodePath("writer")
+camera = NodePath("cam")
+cover_black = NodePath("cover_black")
+
+[node name="cam" type="Camera2D" parent="." unique_id=153367188]
+position = Vector2(320, 240)
+
+[node name="reference" type="Sprite2D" parent="." unique_id=1863319256]
+visible = false
+modulate = Color(1, 1, 1, 0.5764706)
+position = Vector2(320, 240)
+texture = ExtResource("2_iu3gr")
+
+[node name="DistrustBg" type="Sprite2D" parent="." unique_id=84702888]
+position = Vector2(320, 150)
+scale = Vector2(2, 2)
+texture = ExtResource("3_7i812")
+
+[node name="attackvars" type="Node" parent="." unique_id=982291193 node_paths=PackedStringArray("in_buttons_state", "bullet_holder", "bullet_mask")]
+script = ExtResource("3_vhukx")
+boxtexts = Array[String](["* This is [color=red][shake]text[/shake][/color] [pause=0.5]1 [pause=1.0]
+* :3"])
+in_buttons_state = NodePath("../battle_state_machine/in_buttons")
+bullet_holder = NodePath("../bullet_holder")
+bullet_mask = NodePath("../bullet_holder/mask")
+metadata/_custom_type_script = "uid://dawbg47q6vw7f"
+
+[node name="attack_0" type="Node" parent="attackvars" unique_id=569160391 node_paths=PackedStringArray("enemy_to_speak_1", "enemy_2", "board")]
+script = ExtResource("4_dfhb0")
+enemy_to_speak_1 = NodePath("../../enemy_container/godotman")
+enemy_2 = NodePath("../../enemy_container/godotman2")
+board = NodePath("../../battle_board")
+metadata/_custom_type_script = "uid://b1qpfh26n3wv7"
+
+[node name="player_ui" type="Node" parent="." unique_id=140507202]
+script = ExtResource("4_qsoso")
+
+[node name="main_ui" type="Control" parent="player_ui" unique_id=1919709432]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 36.0
+offset_top = 392.0
+offset_right = 607.0
+offset_bottom = 432.0
+
+[node name="name_lv" type="Label" parent="player_ui/main_ui" unique_id=1432350736]
+layout_mode = 0
+offset_right = 206.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.52
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = ExtResource("4_v7lgb")
+theme_override_font_sizes/font_size = 24
+text = "Player LV 1"
+vertical_alignment = 1
+autowrap_trim_flags = 0
+
+[node name="hp_label" type="Label" parent="player_ui/main_ui" unique_id=482621110]
+layout_mode = 0
+offset_left = 209.0
+offset_top = 6.0
+offset_right = 235.0
+offset_bottom = 29.0
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = ExtResource("5_ymsar")
+theme_override_font_sizes/font_size = 12
+text = "HP"
+vertical_alignment = 1
+
+[node name="hp_bar" type="ProgressBar" parent="player_ui/main_ui" unique_id=1904338803]
+layout_mode = 0
+offset_left = 240.0
+offset_top = 8.0
+offset_right = 265.0
+offset_bottom = 29.0
+theme_override_styles/background = SubResource("StyleBoxFlat_ymsar")
+theme_override_styles/fill = SubResource("StyleBoxFlat_qsoso")
+value = 100.0
+show_percentage = false
+
+[node name="after_bar" type="Control" parent="player_ui/main_ui" unique_id=1229356821]
+anchors_preset = 0
+offset_left = 279.0
+offset_top = 6.0
+offset_right = 406.0
+offset_bottom = 31.0
+
+[node name="hp_hpmax" type="Label" parent="player_ui/main_ui/after_bar" unique_id=49588006]
+layout_mode = 0
+offset_left = 32.0
+offset_top = -6.0
+offset_right = 132.0
+offset_bottom = 34.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.52
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = ExtResource("4_v7lgb")
+theme_override_font_sizes/font_size = 24
+text = "20 / 20"
+vertical_alignment = 1
+autowrap_trim_flags = 0
+
+[node name="kr_label" type="Label" parent="player_ui/main_ui/after_bar" unique_id=790027112]
+layout_mode = 0
+offset_right = 26.0
+offset_bottom = 23.0
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = ExtResource("5_ymsar")
+theme_override_font_sizes/font_size = 12
+text = "KR"
+vertical_alignment = 1
+
+[node name="buttons_container" type="Node2D" parent="player_ui" unique_id=192156318]
+position = Vector2(30, 430)
+
+[node name="button_fight" type="AnimatedSprite2D" parent="player_ui/buttons_container" unique_id=2074821596]
+position = Vector2(57, 23)
+sprite_frames = SubResource("SpriteFrames_qsoso")
+
+[node name="button_act" type="AnimatedSprite2D" parent="player_ui/buttons_container" unique_id=740723199]
+position = Vector2(210, 23)
+sprite_frames = SubResource("SpriteFrames_i7stt")
+
+[node name="button_item" type="AnimatedSprite2D" parent="player_ui/buttons_container" unique_id=301233084]
+position = Vector2(370, 23)
+sprite_frames = SubResource("SpriteFrames_dfhb0")
+
+[node name="button_mercy" type="AnimatedSprite2D" parent="player_ui/buttons_container" unique_id=1708468916]
+position = Vector2(525, 23)
+sprite_frames = SubResource("SpriteFrames_5idiv")
+
+[node name="battle_state_machine" parent="." unique_id=452425255 node_paths=PackedStringArray("attack_variables", "init_state") instance=ExtResource("3_8j7uo")]
+attack_variables = NodePath("../attackvars")
+init_state = NodePath("in_buttons")
+
+[node name="in_buttons" type="Node" parent="battle_state_machine" unique_id=1648987428 node_paths=PackedStringArray("battle_writer", "attack_vars", "buttoncontainer", "enemycontainer", "player_heart", "state_fight_button", "state_act_button", "state_item_button", "state_mercy_button", "board")]
+script = ExtResource("7_ymsar")
+battle_writer = NodePath("../../writer")
+attack_vars = NodePath("../../attackvars")
+buttoncontainer = NodePath("../../player_ui/buttons_container")
+enemycontainer = NodePath("../../enemy_container")
+player_heart = NodePath("../../player_soul")
+state_fight_button = NodePath("../fight_button")
+state_act_button = NodePath("../act_button")
+state_item_button = NodePath("../item_button")
+state_mercy_button = NodePath("../mercy_button")
+board = NodePath("../../battle_board")
+metadata/_custom_type_script = "uid://ccsp5feod5wjj"
+
+[node name="fight_button" type="Node" parent="battle_state_machine" unique_id=716600908 node_paths=PackedStringArray("enemycontainer", "player_heart", "buttons_state", "attack_enemy_state", "battle_writer")]
+script = ExtResource("10_d8ltm")
+enemycontainer = NodePath("../../enemy_container")
+player_heart = NodePath("../../player_soul")
+buttons_state = NodePath("../in_buttons")
+attack_enemy_state = NodePath("../attacking_enemy")
+battle_writer = NodePath("../../writer")
+metadata/_custom_type_script = "uid://ccsp5feod5wjj"
+
+[node name="attacking_enemy" type="Node" parent="battle_state_machine" unique_id=1007863252 node_paths=PackedStringArray("enemycontainer", "player_heart", "battle_writer", "buttoncontainer", "in_buttons_state", "pre_attack_state")]
+script = ExtResource("11_ac0h1")
+enemycontainer = NodePath("../../enemy_container")
+player_heart = NodePath("../../player_soul")
+battle_writer = NodePath("../../writer")
+buttoncontainer = NodePath("../../player_ui/buttons_container")
+in_buttons_state = NodePath("../in_buttons")
+pre_attack_state = NodePath("../pre_attack")
+metadata/_custom_type_script = "uid://ccsp5feod5wjj"
+
+[node name="pre_attack" type="Node" parent="battle_state_machine" unique_id=577443431 node_paths=PackedStringArray("player_heart", "battle_writer", "attack_vars", "attack_state")]
+script = ExtResource("12_xr8na")
+player_heart = NodePath("../../player_soul")
+battle_writer = NodePath("../../writer")
+attack_vars = NodePath("../../attackvars")
+attack_state = NodePath("../enemy_attack")
+metadata/_custom_type_script = "uid://ccsp5feod5wjj"
+
+[node name="enemy_attack" type="Node" parent="battle_state_machine" unique_id=460490762 node_paths=PackedStringArray("player_heart", "battle_writer")]
+script = ExtResource("13_2nveb")
+player_heart = NodePath("../../player_soul")
+battle_writer = NodePath("../../writer")
+metadata/_custom_type_script = "uid://ccsp5feod5wjj"
+
+[node name="act_button" type="Node" parent="battle_state_machine" unique_id=728219988 node_paths=PackedStringArray("enemycontainer", "player_heart", "buttons_state", "acting_enemy_state", "battle_writer")]
+script = ExtResource("16_5gvuc")
+enemycontainer = NodePath("../../enemy_container")
+player_heart = NodePath("../../player_soul")
+buttons_state = NodePath("../in_buttons")
+acting_enemy_state = NodePath("../acting_enemy")
+battle_writer = NodePath("../../writer")
+metadata/_custom_type_script = "uid://ccsp5feod5wjj"
+
+[node name="acting_enemy" type="Node" parent="battle_state_machine" unique_id=350713868 node_paths=PackedStringArray("enemy_container", "scroll_show", "battle_writer", "player_heart", "act_text_state", "act_button_state")]
+script = ExtResource("17_5idiv")
+enemy_container = NodePath("../../enemy_container")
+scroll_show = NodePath("../../item_scroll")
+battle_writer = NodePath("../../writer")
+player_heart = NodePath("../../player_soul")
+act_text_state = NodePath("../act_text")
+act_button_state = NodePath("../act_button")
+metadata/_custom_type_script = "uid://ccsp5feod5wjj"
+
+[node name="act_text" type="Node" parent="battle_state_machine" unique_id=678145100 node_paths=PackedStringArray("acting_enemy_state", "in_buttons_state", "player_heart", "battle_writer", "button_container")]
+script = ExtResource("18_4kttd")
+acting_enemy_state = NodePath("../acting_enemy")
+in_buttons_state = NodePath("../in_buttons")
+player_heart = NodePath("../../player_soul")
+battle_writer = NodePath("../../writer")
+button_container = NodePath("../../player_ui/buttons_container")
+metadata/_custom_type_script = "uid://ccsp5feod5wjj"
+
+[node name="item_button" type="Node" parent="battle_state_machine" unique_id=1783294656 node_paths=PackedStringArray("item_text_state", "buttons_state", "battle", "textblockholder", "battle_writer", "player_heart")]
+script = ExtResource("19_c3qdy")
+item_text_state = NodePath("../using_item")
+buttons_state = NodePath("../in_buttons")
+battle = NodePath("../..")
+textblockholder = NodePath("../../text_block_holder")
+battle_writer = NodePath("../../writer")
+player_heart = NodePath("../../player_soul")
+metadata/_custom_type_script = "uid://ccsp5feod5wjj"
+
+[node name="using_item" type="Node" parent="battle_state_machine" unique_id=859467366 node_paths=PackedStringArray("battle_writer", "buttons_state")]
+script = ExtResource("20_1qrii")
+battle_writer = NodePath("../../writer")
+buttons_state = NodePath("../in_buttons")
+metadata/_custom_type_script = "uid://ccsp5feod5wjj"
+
+[node name="mercy_button" type="Node" parent="battle_state_machine" unique_id=1630865923 node_paths=PackedStringArray("enemycontainer", "player_heart", "buttons_state", "mercy_enemy_state", "battle_writer")]
+script = ExtResource("20_xntmu")
+enemycontainer = NodePath("../../enemy_container")
+player_heart = NodePath("../../player_soul")
+buttons_state = NodePath("../in_buttons")
+mercy_enemy_state = NodePath("../mercy_enemy")
+battle_writer = NodePath("../../writer")
+metadata/_custom_type_script = "uid://ccsp5feod5wjj"
+
+[node name="mercy_enemy" type="Node" parent="battle_state_machine" unique_id=565022354 node_paths=PackedStringArray("enemycontainer", "player_heart", "buttons_state", "mercy_button_state", "flee_state", "battle_writer", "battle")]
+script = ExtResource("21_i1wxw")
+enemycontainer = NodePath("../../enemy_container")
+player_heart = NodePath("../../player_soul")
+buttons_state = NodePath("../in_buttons")
+mercy_button_state = NodePath("../mercy_button")
+flee_state = NodePath("../flee_fight")
+battle_writer = NodePath("../../writer")
+battle = NodePath("../..")
+metadata/_custom_type_script = "uid://ccsp5feod5wjj"
+
+[node name="flee_fight" type="Node" parent="battle_state_machine" unique_id=232249111]
+script = ExtResource("12_i7stt")
+metadata/_custom_type_script = "uid://ccsp5feod5wjj"
+
+[node name="enemy_container" type="Node2D" parent="." unique_id=2066037855]
+script = ExtResource("12_m68fl")
+
+[node name="godotman" parent="enemy_container" unique_id=1421685219 instance=ExtResource("2_ucjnn")]
+position = Vector2(200, 245)
+dodge = true
+
+[node name="godotman2" parent="enemy_container" unique_id=1394762364 instance=ExtResource("2_ucjnn")]
+show_behind_parent = true
+position = Vector2(440, 245)
+enemy_name = "Todd"
+spareable = true
+
+[node name="battle_board" parent="." unique_id=2070607025 instance=ExtResource("3_inp38")]
+
+[node name="item_scroll" type="AnimatedSprite2D" parent="." unique_id=727554661]
+visible = false
+position = Vector2(580, 320)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_i1wxw")
+
+[node name="text_block_holder" type="Node2D" parent="." unique_id=1293388441]
+
+[node name="player_soul" parent="." unique_id=1438786915 instance=ExtResource("17_us48r")]
+position = Vector2(320, 320)
+
+[node name="writer" type="RichTextLabel" parent="." unique_id=339743751]
+physics_interpolation_mode = 0
+texture_filter = 1
+clip_contents = false
+offset_left = 52.0
+offset_top = 270.0
+offset_right = 597.0
+offset_bottom = 379.0
+theme_override_constants/outline_size = 9
+theme_override_fonts/normal_font = ExtResource("4_qejx5")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "* box_text"
+scroll_active = false
+script = ExtResource("4_1wik3")
+sound_file = ExtResource("22_dfhb0")
+metadata/_custom_type_script = "uid://dsj3msvuimn43"
+
+[node name="bullet_holder" type="Node2D" parent="." unique_id=629998366]
+
+[node name="mask" type="ColorRect" parent="bullet_holder" unique_id=183337239 node_paths=PackedStringArray("board")]
+clip_children = 1
+offset_left = 38.0
+offset_top = 255.0
+offset_right = 603.0
+offset_bottom = 385.0
+color = Color(1, 0, 0.016666412, 1)
+script = ExtResource("32_e350c")
+board = NodePath("../../battle_board")
+
+[node name="modulate" type="CanvasModulate" parent="." unique_id=230402903]
+
+[node name="cover_black" type="ColorRect" parent="." unique_id=1281754961]
+modulate = Color(1, 1, 1, 0)
+offset_right = 640.0
+offset_bottom = 480.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="debugtext" type="RichTextLabel" parent="." unique_id=1626638901 node_paths=PackedStringArray("statemachine")]
+modulate = Color(0.5931336, 0.59313357, 0.59313357, 1)
+clip_contents = false
+offset_left = 5.0
+offset_top = 4.0
+offset_right = 640.0
+offset_bottom = 480.0
+theme_override_constants/outline_size = 4
+theme_override_fonts/normal_font = ExtResource("6_iu3gr")
+theme_override_font_sizes/normal_font_size = 13
+text = "an debug text"
+script = ExtResource("8_jvyui")
+statemachine = NodePath("../battle_state_machine")
+metadata/_edit_lock_ = true

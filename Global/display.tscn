@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://t28jndbvirt8"]
+
+[ext_resource type="Script" uid="uid://c13ow5k0nt8q6" path="res://Global/scr_display.gd" id="1_54qfc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_54qfc"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
+
+[node name="display" type="Node" unique_id=108339034 node_paths=PackedStringArray("View", "BorderView")]
+script = ExtResource("1_54qfc")
+Init_Scene = "uid://dqu1cjrbjuxq4"
+View = NodePath("viewport_holder/viewport")
+BorderView = NodePath("border_holder/border_viewport")
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=1680217801]
+offset_right = 960.0
+offset_bottom = 540.0
+color = Color(0, 0, 0, 1)
+
+[node name="border_holder" type="SubViewportContainer" parent="." unique_id=198479117]
+offset_right = 960.0
+offset_bottom = 540.0
+
+[node name="border_viewport" type="SubViewport" parent="border_holder" unique_id=1208658659]
+transparent_bg = true
+size = Vector2i(640, 480)
+
+[node name="ColorRect" type="Panel" parent="." unique_id=445785197]
+offset_left = 160.0
+offset_top = 30.0
+offset_right = 800.0
+offset_bottom = 510.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_54qfc")
+
+[node name="viewport_holder" type="SubViewportContainer" parent="." unique_id=2047614834]
+offset_left = 160.0
+offset_top = 30.0
+offset_right = 800.0
+offset_bottom = 510.0
+
+[node name="viewport" type="SubViewport" parent="viewport_holder" unique_id=1013924386]
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+size = Vector2i(640, 480)
+render_target_update_mode = 4

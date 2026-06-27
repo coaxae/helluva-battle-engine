@@ -1,0 +1,124 @@
+[gd_scene format=3 uid="uid://cmom0kq1bjh7o"]
+
+[ext_resource type="Script" uid="uid://7u8b60imrsg4" path="res://Unique/Battles/Template/Enemies/godotman/scr_godotman.gd" id="1_gptyd"]
+[ext_resource type="AudioStream" uid="uid://cfyplyi66f5gk" path="res://Assets/Sounds/Test/hit_react_1.wav" id="2_3v5xo"]
+[ext_resource type="AudioStream" uid="uid://dh6c8j8fjouol" path="res://Assets/Sounds/Test/hit_react_2.wav" id="3_37a7c"]
+[ext_resource type="AudioStream" uid="uid://erd2elaahi8a" path="res://Assets/Sounds/Test/hit_react_3.wav" id="4_svy25"]
+[ext_resource type="Texture2D" uid="uid://gyukkanqakes" path="res://icon.svg" id="5_2ha7v"]
+[ext_resource type="Texture2D" uid="uid://b1s0er85xumwy" path="res://Assets/Textures/sheets/speechbubble-sheet.png" id="5_kf0q1"]
+[ext_resource type="Script" uid="uid://duhtnjwmis7" path="res://Global/BattleEngine/scr_bubble.gd" id="6_k51v3"]
+[ext_resource type="FontFile" uid="uid://c3jxu15i1w4dx" path="res://Assets/Fonts/dotumche_pixel.ttf" id="6_l70bt"]
+[ext_resource type="Script" uid="uid://dsj3msvuimn43" path="res://Global/UI/scr_writer.gd" id="7_k51v3"]
+[ext_resource type="AudioStream" uid="uid://dynhtmhpy7ji8" path="res://Assets/Sounds/Blits/blip_0.wav" id="7_v205f"]
+[ext_resource type="FontFile" uid="uid://l66sssyrk48l" path="res://Assets/Fonts/hachicro.ttf" id="8_3cvwt"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_32u8w"]
+load_path = "res://.godot/imported/speechbubble-sheet.png-ee069e940a82c928cff17f9966975b66.ctex"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7yhoh"]
+bg_color = Color(0.23753911, 0.23753914, 0.23753902, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hmudu"]
+bg_color = Color(0, 0.84947944, 0.01151859, 1)
+
+[node name="godotman" type="Node2D" unique_id=1421685219 node_paths=PackedStringArray("character", "text_bubble", "bubble_writer", "attack_point", "hit_text", "healthbar")]
+script = ExtResource("1_gptyd")
+enemy_name = "Godot Man"
+character = NodePath("Character")
+text_bubble = NodePath("TextBubble")
+bubble_writer = NodePath("TextBubble/bubbletail/textbubble/text_writer")
+attack_point = NodePath("attack_point")
+hit_react_sounds = Array[AudioStream]([ExtResource("2_3v5xo"), ExtResource("3_37a7c"), ExtResource("4_svy25")])
+Health = 1000
+MaxHealth = 1000
+hit_text = NodePath("hit_text_point/hit_text")
+healthbar = NodePath("hit_text_point/healthbar")
+check_text = "* just a godot man."
+
+[node name="Character" type="Node2D" parent="." unique_id=1967502900]
+
+[node name="Icon" type="Sprite2D" parent="Character" unique_id=2108602456]
+position = Vector2(0, -64)
+texture = ExtResource("5_2ha7v")
+
+[node name="TextBubble" type="Node2D" parent="." unique_id=383209876]
+position = Vector2(70, -70)
+
+[node name="bubbletail" type="Sprite2D" parent="TextBubble" unique_id=1205184166]
+position = Vector2(6, 0)
+texture = SubResource("CompressedTexture2D_32u8w")
+region_enabled = true
+region_rect = Rect2(0, 0, 12, 22)
+
+[node name="textbubble" type="NinePatchRect" parent="TextBubble/bubbletail" unique_id=1404709608 node_paths=PackedStringArray("text")]
+anchors_preset = -1
+anchor_left = -0.083333336
+anchor_right = 0.5
+offset_left = 6.0
+offset_top = -15.0
+offset_right = 60.0
+offset_bottom = 24.0
+texture = ExtResource("5_kf0q1")
+region_rect = Rect2(13, 0, 22, 22)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+script = ExtResource("6_k51v3")
+text = NodePath("text_writer")
+metadata/_custom_type_script = "uid://duhtnjwmis7"
+metadata/_edit_use_anchors_ = true
+
+[node name="text_writer" type="RichTextLabel" parent="TextBubble/bubbletail/textbubble" unique_id=112142384]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 10.0
+offset_right = 18.0
+offset_bottom = 29.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("6_l70bt")
+theme_override_font_sizes/normal_font_size = 13
+bbcode_enabled = true
+text = "abc:3"
+fit_content = true
+autowrap_mode = 0
+script = ExtResource("7_k51v3")
+sound_file = ExtResource("7_v205f")
+metadata/_custom_type_script = "uid://dsj3msvuimn43"
+
+[node name="attack_point" type="Marker2D" parent="." unique_id=5186445]
+position = Vector2(0, -62)
+
+[node name="hit_text_point" type="Marker2D" parent="." unique_id=1990211281]
+position = Vector2(0, -217)
+
+[node name="hit_text" type="Label" parent="hit_text_point" unique_id=1179590309]
+visible = false
+offset_left = -112.0
+offset_right = 112.0
+offset_bottom = 23.0
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = ExtResource("8_3cvwt")
+theme_override_font_sizes/font_size = 32
+text = "MISS"
+horizontal_alignment = 1
+
+[node name="healthbar" type="ProgressBar" parent="hit_text_point" unique_id=1904118664]
+visible = false
+offset_left = -100.0
+offset_top = 47.0
+offset_right = 100.0
+offset_bottom = 67.0
+theme_override_styles/background = SubResource("StyleBoxFlat_7yhoh")
+theme_override_styles/fill = SubResource("StyleBoxFlat_hmudu")
+value = 50.0
+show_percentage = false
