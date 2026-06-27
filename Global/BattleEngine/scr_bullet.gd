@@ -19,4 +19,3 @@ func _process(delta: float) -> void:
 	ROT += ROT_SPEED * 60.0 * delta
 	self.global_position = POS
 	self.global_rotation_degrees = ROT
-	

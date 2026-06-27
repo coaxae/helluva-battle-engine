@@ -22,6 +22,6 @@ func _ready() -> void:
 	current_state = init_state
 	current_state.state_start()
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if current_state:
 		current_state.state_process(delta)

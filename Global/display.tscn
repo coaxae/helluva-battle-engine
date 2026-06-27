@@ -1,6 +1,26 @@
 [gd_scene format=3 uid="uid://t28jndbvirt8"]
 
 [ext_resource type="Script" uid="uid://c13ow5k0nt8q6" path="res://Global/scr_display.gd" id="1_54qfc"]
+[ext_resource type="Shader" uid="uid://dt861i6wuf4hl" path="res://Assets/Shaders/border.gdshader" id="2_i5atm"]
+[ext_resource type="Texture2D" uid="uid://bp38kgh2velvb" path="res://Assets/Textures/Borders/border_simple.png" id="3_i7vax"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i7vax"]
+shader = ExtResource("2_i5atm")
+shader_parameter/quality = 0
+shader_parameter/level = 1.0
+shader_parameter/dark = 0.05
+shader_parameter/scale = 0.65
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4gmqw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_i7vax")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_54qfc"]
 bg_color = Color(0, 0, 0, 1)
@@ -18,22 +38,17 @@ expand_margin_bottom = 3.0
 script = ExtResource("1_54qfc")
 Init_Scene = "uid://dqu1cjrbjuxq4"
 View = NodePath("viewport_holder/viewport")
-BorderView = NodePath("border_holder/border_viewport")
+BorderView = NodePath("")
 
-[node name="ColorRect2" type="ColorRect" parent="." unique_id=1680217801]
-offset_right = 960.0
-offset_bottom = 540.0
-color = Color(0, 0, 0, 1)
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1850511179]
 
-[node name="border_holder" type="SubViewportContainer" parent="." unique_id=198479117]
-offset_right = 960.0
-offset_bottom = 540.0
+[node name="le_border" type="AnimatedSprite2D" parent="CanvasLayer" unique_id=508528620]
+material = SubResource("ShaderMaterial_i7vax")
+sprite_frames = SubResource("SpriteFrames_4gmqw")
+centered = false
 
-[node name="border_viewport" type="SubViewport" parent="border_holder" unique_id=1208658659]
-transparent_bg = true
-size = Vector2i(640, 480)
-
-[node name="ColorRect" type="Panel" parent="." unique_id=445785197]
+[node name="backing_rect" type="Panel" parent="." unique_id=445785197]
+visible = false
 offset_left = 160.0
 offset_top = 30.0
 offset_right = 800.0

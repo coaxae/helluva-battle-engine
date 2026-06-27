@@ -21,7 +21,7 @@ signal text_finished
 func _ready() -> void:
 	pause_regex.compile(r"\[pause=([0-9]*\.?[0-9]+)\]")
 
-func _process(delta : float) -> void:
+func _physics_process(delta : float) -> void:
 	
 	if Input.is_action_just_pressed("Exit") and visible_characters > 0:
 		skip()

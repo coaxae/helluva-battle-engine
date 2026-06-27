@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://cvwdqf2h8j30a" path="res://Unique/Bullets/bullet_test.gd" id="1_e5sdu"]
 [ext_resource type="Texture2D" uid="uid://camjy5jujeknn" path="res://Assets/Textures/Template/Fetus_Stolas_by_Miki.png" id="2_e5sdu"]
-[ext_resource type="Script" uid="uid://ccyv5q75j45hu" path="res://Unique/Bullets/col.gd" id="3_v48bl"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v48bl"]
 height = 58.0
@@ -16,7 +15,6 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_e5sdu")
 
 [node name="col" type="Area2D" parent="." unique_id=426321132]
-script = ExtResource("3_v48bl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="col" unique_id=1863190165]
 position = Vector2(0, 2)

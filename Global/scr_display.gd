@@ -13,6 +13,9 @@ var screen_shake := 0.0
 var fullscreen := false
 
 func _ready() -> void:
+	
+	RenderingServer.set_default_clear_color(Color.BLACK)
+	
 	change_scene(Init_Scene)
 
 func _process(delta: float) -> void:

@@ -28,7 +28,7 @@ var player_curse : player_curses = player_curses.NONE
 
 var player_weapon = preload("res://Global/BattleEngine/weapon/weapon_knife.tscn")
 
-func _process(_delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	player_max_hp = 16 + 4 * player_lv
 	player_hp = clamp(player_hp, 0, player_max_hp)
 	
